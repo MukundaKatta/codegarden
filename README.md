@@ -4,19 +4,37 @@
 
 Your kid builds a game, a Discord bot, or a mod — guided by an AI tutor that speaks their language.
 
-## What you get
+## Stack
 
-- **Project-first** — Ten minutes in, they've shipped something they're proud of. Grammar comes later.
-- **Explains on their terms** — Memes, analogies, short videos. The tutor is as likely to send a TikTok as a tutorial.
-- **Showcase projects** — Parents get a shareable portfolio page. Colleges and summer programs notice.
+- **Next.js 15** · App Router
+- **TypeScript** (strict mode)
+- **Tailwind v4** (`@tailwindcss/postcss`, CSS-first, no config file)
+- `next/font/google` for Inter
+- `pnpm` lockfile committed
 
-## Category
+## Run locally
 
-Education. Part of a 50-product exploration of high-demand consumer and SMB markets.
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Deploy
+
+Deploy to Vercel — Next.js is auto-detected, zero config required.
+
+No environment variables needed. The waitlist API URL is public and hardcoded in `app/api/waitlist/route.ts`.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (ported from `index.html`) with waitlist form |
+| `/try` | Pick a game (Pong or Snake), read a 10-line annotated snippet, hit Run to render a canvas placeholder |
+| `/api/waitlist` | `POST { email }` → forwards to the waitlist API with `product: "codegarden"` |
 
 ## Status
 
-Landing page live with interactive demo and functional waitlist.
-
-- **Live:** https://mukundakatta.github.io/codegarden/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+**v0 skeleton.** Landing page live with interactive demo widget and functional waitlist. The `/try` canvas renders a static placeholder shape — no real game loop yet.
